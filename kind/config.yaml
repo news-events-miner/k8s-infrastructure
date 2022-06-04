@@ -1,0 +1,19 @@
+---
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: news-events-miner
+
+kubeadmConfigPatches:
+  - |
+    apiVersion: kubelet.config.k8s.io/v1beta1
+    kind: KubeletConfiguration
+    evictionHard:
+      nodefs.available: "0%"
+
+# 1 control plane node and 3 workers
+nodes:
+  - role: control-plane
+
+  - role: worker
+  - role: worker
+  - role: worker
