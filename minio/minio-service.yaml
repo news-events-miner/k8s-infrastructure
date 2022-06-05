@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: minio
+  name: minio-service
+  labels:
+    app: minio
+spec:
+  selector:
+    app: minio
+  type: NodePort
+  ports:
+    - port: 9000
+      name: raw
+    - port: 9001
+      name: ui
